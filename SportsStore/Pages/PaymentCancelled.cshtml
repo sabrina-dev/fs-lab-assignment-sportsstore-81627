@@ -1,0 +1,10 @@
+@page
+@model SportsStore.Pages.PaymentCancelledModel
+
+<div class="text-center mt-5">
+    <h2 class="text-warning">Payment Cancelled</h2>
+    <p>Your payment was not completed. Your order <strong>#@Model.OrderId</strong> has been saved.</p>
+    <p>You can try again or contact us if you need help.</p>
+    <a class="btn btn-primary mt-3" asp-controller="Home">Return to Store</a>
+    <a class="btn btn-secondary mt-3 ms-2" asp-controller="Order" asp-action="Checkout">Try Again</a>
+</div>

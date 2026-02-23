@@ -1,0 +1,9 @@
+@page
+@model SportsStore.Pages.PaymentSuccessModel
+
+<div class="text-center mt-5">
+    <h2 class="text-success">Payment Successful!</h2>
+    <p>Thank you — your payment has been received.</p>
+    <p>Order <strong>#@Model.OrderId</strong> has been confirmed and will be shipped as soon as possible.</p>
+    <a class="btn btn-primary mt-3" asp-controller="Home">Return to Store</a>
+</div>

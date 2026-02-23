@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore SportsSln.sln
+
+      - name: Build (Release)
+        run: dotnet build SportsSln.sln --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test SportsSln.sln --configuration Release --no-build --verbosity normal

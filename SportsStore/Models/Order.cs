@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace SportsStore.Models {
@@ -7,6 +7,7 @@ namespace SportsStore.Models {
 
         [BindNever]
         public int OrderID { get; set; }
+
         [BindNever]
         public ICollection<CartLine> Lines { get; set; } = new List<CartLine>();
 
@@ -33,5 +34,21 @@ namespace SportsStore.Models {
 
         [BindNever]
         public bool Shipped { get; set; }
+
+        // ── Payment metadata populated by Stripe webhook ───────────────────
+        [BindNever]
+        public string PaymentStatus { get; set; } = "Pending";
+
+        [BindNever]
+        public string? PaymentIntentId { get; set; }
+
+        [BindNever]
+        public string? CheckoutSessionId { get; set; }
+
+        [BindNever]
+        public DateTime? PaidAt { get; set; }
+
+        [BindNever]
+        public decimal PaidAmount { get; set; }
     }
 }
